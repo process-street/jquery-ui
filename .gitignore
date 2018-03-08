@@ -2,3 +2,6 @@ dist
 bower_components
 node_modules
 .sizecache.json
+jquery-ui.iml
+package-lock.json
+.idea/
