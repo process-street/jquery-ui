@@ -52,6 +52,7 @@ return $.widget( "ui.sortable", $.ui.mouse, {
 		handle: false,
 		helper: "original",
 		items: "> *",
+		onRevertUseScrollParent: false,
 		opacity: false,
 		placeholder: false,
 		revert: false,
@@ -520,18 +521,22 @@ return $.widget( "ui.sortable", $.ui.mouse, {
 				axis = this.options.axis,
 				animation = {};
 
+			var offSetElement = this.options.onRevertUseScrollParent ?
+			  this.placeholder.scrollParent() :
+			  this.offsetParent;
+
 			if ( !axis || axis === "x" ) {
 				animation.left = cur.left - this.offset.parent.left - this.margins.left +
-					( this.offsetParent[ 0 ] === this.document[ 0 ].body ?
+					( offSetElement[ 0 ] === this.document[ 0 ].body ?
 						0 :
-						this.offsetParent[ 0 ].scrollLeft
+						offSetElement[ 0 ].scrollLeft
 					);
 			}
 			if ( !axis || axis === "y" ) {
 				animation.top = cur.top - this.offset.parent.top - this.margins.top +
-					( this.offsetParent[ 0 ] === this.document[ 0 ].body ?
+					( offSetElement[ 0 ] === this.document[ 0 ].body ?
 						0 :
-						this.offsetParent[ 0 ].scrollTop
+						offSetElement[ 0 ].scrollTop
 					);
 			}
 			this.reverting = true;
