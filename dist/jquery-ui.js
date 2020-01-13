@@ -16561,22 +16561,22 @@ return $.widget( "ui.sortable", $.ui.mouse, {
 				axis = this.options.axis,
 				animation = {};
 
-			var offSetElement = this.options.onRevertUseScrollParent ?
-			  this.placeholder.scrollParent() :
+			var offsetElement = this.options.onRevertUseScrollParent ?
+			  this.scrollParent :
 			  this.offsetParent;
 
 			if ( !axis || axis === "x" ) {
 				animation.left = cur.left - this.offset.parent.left - this.margins.left +
-					( offSetElement[ 0 ] === this.document[ 0 ].body ?
+					( offsetElement[ 0 ] === this.document[ 0 ].body ?
 						0 :
-						offSetElement[ 0 ].scrollLeft
+						offsetElement[ 0 ].scrollLeft
 					);
 			}
 			if ( !axis || axis === "y" ) {
 				animation.top = cur.top - this.offset.parent.top - this.margins.top +
-					( offSetElement[ 0 ] === this.document[ 0 ].body ?
+					( offsetElement[ 0 ] === this.document[ 0 ].body ?
 						0 :
-						offSetElement[ 0 ].scrollTop
+						offsetElement[ 0 ].scrollTop
 					);
 			}
 			this.reverting = true;

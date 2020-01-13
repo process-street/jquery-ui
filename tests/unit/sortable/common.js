@@ -23,6 +23,7 @@ common.testWidget( "sortable", {
 		handle: false,
 		helper: "original",
 		items: "> *",
+		onRevertUseScrollParent: false,
 		opacity: false,
 		placeholder: false,
 		revert: false,
