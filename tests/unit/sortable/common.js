@@ -23,7 +23,6 @@ common.testWidget( "sortable", {
 		handle: false,
 		helper: "original",
 		items: "> *",
-		onRevertUseScrollParent: false,
 		opacity: false,
 		placeholder: false,
 		revert: false,
@@ -32,6 +31,7 @@ common.testWidget( "sortable", {
 		scrollSpeed: 20,
 		scope: "default",
 		tolerance: "intersect",
+		withRevertUseScrollParent: false,
 		zIndex: 1000,
 
 		// Callbacks

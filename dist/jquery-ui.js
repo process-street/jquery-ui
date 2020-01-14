@@ -16092,7 +16092,6 @@ return $.widget( "ui.sortable", $.ui.mouse, {
 		handle: false,
 		helper: "original",
 		items: "> *",
-		onRevertUseScrollParent: false,
 		opacity: false,
 		placeholder: false,
 		revert: false,
@@ -16101,6 +16100,7 @@ return $.widget( "ui.sortable", $.ui.mouse, {
 		scrollSpeed: 20,
 		scope: "default",
 		tolerance: "intersect",
+		withRevertUseScrollParent: false,
 		zIndex: 1000,
 
 		// Callbacks
@@ -16561,7 +16561,7 @@ return $.widget( "ui.sortable", $.ui.mouse, {
 				axis = this.options.axis,
 				animation = {};
 
-			var offsetElement = this.options.onRevertUseScrollParent ?
+			var offsetElement = this.options.withRevertUseScrollParent ?
 			  this.scrollParent :
 			  this.offsetParent;
 
