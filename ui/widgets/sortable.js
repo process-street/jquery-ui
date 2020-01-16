@@ -60,6 +60,7 @@ return $.widget( "ui.sortable", $.ui.mouse, {
 		scrollSpeed: 20,
 		scope: "default",
 		tolerance: "intersect",
+		withRevertUseScrollParent: false,
 		zIndex: 1000,
 
 		// Callbacks
@@ -520,18 +521,22 @@ return $.widget( "ui.sortable", $.ui.mouse, {
 				axis = this.options.axis,
 				animation = {};
 
+			var offsetElement = this.options.withRevertUseScrollParent ?
+			  this.scrollParent :
+			  this.offsetParent;
+
 			if ( !axis || axis === "x" ) {
 				animation.left = cur.left - this.offset.parent.left - this.margins.left +
-					( this.offsetParent[ 0 ] === this.document[ 0 ].body ?
+					( offsetElement[ 0 ] === this.document[ 0 ].body ?
 						0 :
-						this.offsetParent[ 0 ].scrollLeft
+						offsetElement[ 0 ].scrollLeft
 					);
 			}
 			if ( !axis || axis === "y" ) {
 				animation.top = cur.top - this.offset.parent.top - this.margins.top +
-					( this.offsetParent[ 0 ] === this.document[ 0 ].body ?
+					( offsetElement[ 0 ] === this.document[ 0 ].body ?
 						0 :
-						this.offsetParent[ 0 ].scrollTop
+						offsetElement[ 0 ].scrollTop
 					);
 			}
 			this.reverting = true;
