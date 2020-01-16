@@ -31,7 +31,6 @@ common.testWidget( "sortable", {
 		scrollSpeed: 20,
 		scope: "default",
 		tolerance: "intersect",
-		withRevertUseScrollParent: false,
 		zIndex: 1000,
 
 		// Callbacks
